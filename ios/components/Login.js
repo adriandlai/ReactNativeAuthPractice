@@ -3,8 +3,9 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import firebase from 'react-native-firebase'
 
 export default class Login extends React.Component {
-    
+
   state = { email: '', password: '', errorMessage: null }
+  
   handleLogin = () => {
     const { email, password } = this.state
     firebase
