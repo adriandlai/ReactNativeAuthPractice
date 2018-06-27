@@ -1,13 +1,23 @@
 import React from 'react'
 import { StyleSheet, Platform, Image, Text, View } from 'react-native'
-import { SwitchNavigator } from 'react-navigation'
+import { SwitchNavigator, StackNavigator, TabNavigator } from 'react-navigation'
+
 // import the different screens
 import Loading from './ios/components/Loading'
 import SignUp from './ios/components/SignUp'
 import Login from './ios/components/Login'
 import Main from './ios/components/Main'
+import cartTotal from './ios/components/cartTotal'
+import checkout from './ios/components/checkout'
+import item from './ios/components/item'
+import myAccount from './ios/components/myAccount'
+import newOrder from './ios/components/newOrder'
+import pastOrders from './ios/components/pastOrders'
+import vendorMenu from './ios/components/vendorMenu'
+import vendorSelection from './ios/components/vendorSelection'
+
 // create our app's navigation stack
-const App = SwitchNavigator(
+export const App = SwitchNavigator(
   {
     Loading,
     SignUp,
@@ -18,7 +28,23 @@ const App = SwitchNavigator(
     initialRouteName: 'Loading'
   }
 )
-export default App
+
+// export const Stack = StackNavigator({
+//   ItemList: { screen: ItemList },
+//   Item: { screen: Item },
+// }, {
+//   initialRouteName: 'ItemList',
+// })
+
+// export const Tabs = TabNavigator(
+//   {
+//   // Main: {screen: Main},
+//   myAccount: { screen: myAccount},
+//   pastOrders: { screen: pastOrders }
+// },
+//  {
+//   order: ['pastOrders', 'myAccount']
+// })
 
 
 
