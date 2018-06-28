@@ -1,6 +1,8 @@
 import React from 'react'
 import firebase from 'react-native-firebase'
-import { StyleSheet, Platform, Image, Text, View, Button } from 'react-native'
+// import { StyleSheet, Platform, Image, Text, View} from 'react-native'
+import { Container, Header, Content, Button, Text } from 'native-base';
+
 
 export default class Main extends React.Component {
 
@@ -45,20 +47,39 @@ componentDidMount() {
 render() {
     const { currentUser } = this.state
 return (
-      <View style={styles.container}>
-        <Text>
-          Hi {currentUser && currentUser.email}!
-        </Text>
-        <Button title="Logout" onPress={this.onPressLogOut} />
+    <Container>
+    <Header />
+    <Text>
+    Hi {currentUser && currentUser.email}!
+    </Text>
+    <Content>
+      <Button success 
+      onPress={()=> this.props.navigation.navigate('NewOrder')}>
+      <Text> New Order </Text>
+      </Button>
+      <Button warning><Text> Past Order </Text></Button>
+      <Button danger title="Logout" onPress={this.onPressLogout}><Text> Logout </Text></Button>
+
+    </Content>
+  </Container>
+
+
+    //   <View style={styles.container}>
+    //     <Text>
+    //       Hi {currentUser && currentUser.email}!
+    //     </Text>
+    //     <Button title="Logout" onPress={this.onPressLogOut} />
         
-      </View>
+    //   </View>
     )
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
+
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center'
+//   }
+// })
