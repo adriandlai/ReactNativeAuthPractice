@@ -10,24 +10,51 @@ import Main from './ios/components/Main'
 import cartTotal from './ios/components/cartTotal'
 import checkout from './ios/components/checkout'
 import item from './ios/components/item'
-import myAccount from './ios/components/myAccount'
+import MyAccount from './ios/components/myAccount'
 import newOrder from './ios/components/newOrder'
-import pastOrders from './ios/components/pastOrders'
+import PastOrders from './ios/components/pastOrders'
 import vendorMenu from './ios/components/vendorMenu'
 import vendorSelection from './ios/components/vendorSelection'
 
+
+const OrderNavigator = StackNavigator({
+  Home: Main,
+  PastOrder: PastOrders,
+  NewOrder: newOrder,
+  vendorSelection: vendorSelection,
+  vendorMenu: vendorMenu
+}, {
+  initialRouteName: 'Home',
+})
+
+
+
+
+const Tabs = TabNavigator(
+  {
+  // Main: {screen: Main},
+  MyAccount: { screen: OrderNavigator},
+  // PastOrders: { screen: PastOrders }
+},
+ {
+  order: ['MyAccount']
+})
+
 // create our app's navigation stack
-export const App = SwitchNavigator(
+const App = SwitchNavigator(
   {
     Loading,
     SignUp,
     Login,
-    Main
+    Main: Tabs
   },
   {
     initialRouteName: 'Loading'
   }
 )
+
+export default App
+
 
 // export const Stack = StackNavigator({
 //   ItemList: { screen: ItemList },
@@ -36,15 +63,6 @@ export const App = SwitchNavigator(
 //   initialRouteName: 'ItemList',
 // })
 
-// export const Tabs = TabNavigator(
-//   {
-//   // Main: {screen: Main},
-//   myAccount: { screen: myAccount},
-//   pastOrders: { screen: pastOrders }
-// },
-//  {
-//   order: ['pastOrders', 'myAccount']
-// })
 
 
 
