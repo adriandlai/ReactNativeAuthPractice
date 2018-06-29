@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
 import {TouchableOpacity} from 'react-native'
+import { AppConsumer } from '../../AppContext';
 
 
 const vendors = [
@@ -19,6 +20,8 @@ export default class vendorSelection extends Component {
 
   renderVendor = (vendor, i) => {
     return(
+      <React.Fragment>
+   
       <TouchableOpacity
       key={i}
       // style={styles.item}
@@ -26,8 +29,21 @@ export default class vendorSelection extends Component {
     >
       {/* <Text style={styles.itemText}>{item.name}</Text> */}
       <Text>{vendor.name}</Text>
+      </TouchableOpacity>
+      <AppConsumer>
+          {(context) => (
+            <React.Fragment>
+              <Text>{context.state.users.user[0].email}</Text>
+              {/* {console.log(context.state.user)} */}
+              {/* <p>Name: {context.state.name}</p>
+              <button onClick={context.growAYearOlder}>🍰🍥🎂</button> */}
+            </React.Fragment>
+          )}
+        </AppConsumer>
+        </React.Fragment>
+ 
   
-    </TouchableOpacity>
+    
     )
   }
   
