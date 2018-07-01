@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
+import { AppConsumer } from '../../AppContext';
+
 
 export default class checkout extends Component {
   render() {

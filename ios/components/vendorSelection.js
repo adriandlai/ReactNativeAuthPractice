@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Button, Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
 import { Container, Header, Content, List, ListItem, Thumbnail, Text, Body } from 'native-base';
 
 import {TouchableOpacity} from 'react-native'
@@ -19,10 +18,10 @@ export default class vendorSelection extends Component {
             <React.Fragment>
             {context.state.vendor.vendor.map((vendor,index)=>{
               return(
-                <Container>
+                // <Container>
                   
-                  <Header />
-                  <Content>
+                  // <Header />
+                  // <Content>
                     <List>   
                       <ListItem>
                         <Thumbnail square size={80} source={{ uri: 'https://www.cleaneatsmealprep.com/wp-content/uploads/2017/08/Clean-Eats-Word-Logo.png'}} />
@@ -38,17 +37,8 @@ export default class vendorSelection extends Component {
                         </Body>
                       </ListItem>
                     </List>
-                  </Content>
-                </Container> 
-
-
-
-              //   <TouchableOpacity 
-              //   key={vendor.id}
-              //   onPress={() => this.props.navigation.navigate('vendorMenu', { title: vendor.name})}
-              //  >
-              //  <Text>{vendor.name}</Text>
-              //   </TouchableOpacity>
+                  // </Content>
+                // </Container>
               )
 
 

@@ -1,4 +1,7 @@
 import React from 'react'
+import firebase from 'react-native-firebase'
+import {Alert} from 'react-native'
+
 
 const usersUrl = 'http://localhost:3000/user'
 const vendorUrl = 'http://localhost:3000/vendor'
@@ -19,7 +22,8 @@ export class AppProvider extends React.Component {
         this.state = {
             users: [],
             product:[],
-            vendor:[]
+            vendor:[],
+            currentUser: 2
             // setState = ()
         }
     }
@@ -48,10 +52,32 @@ export class AppProvider extends React.Component {
         }))
 
     }
+
+    // fetchCart = () =>{
+    //     (
+
+    //     )
+    // }
+
+    // setCurrentUser = (currentUser) =>
+    // {
+    //     this.setState({
+    //         currentUser
+    //     })
+    // }
+
+    // setCurrentUser = () =>{
+    //     const { currentUser } = firebase.auth()
+    //     this.setState({
+    //         currentUser: currentUser
+    //     })
+    // }
+
     componentDidMount() {
     this.fetchUser(usersUrl)
     this.fetchVendor(vendorUrl)
     this.fetchProduct(productUrl)
+    // this.setCurrentUser()
        
     }
 
@@ -62,7 +88,8 @@ export class AppProvider extends React.Component {
     render() {
         return (
             <AppContext.Provider value={{
-                state: this.state
+                state: this.state,
+                setCurrentUser: this.setCurrentUser
                 // {
                 //     // loggedIn: this.state.loggedIn,
                 //     users: this.state.users,
