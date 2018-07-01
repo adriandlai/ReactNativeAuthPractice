@@ -1,6 +1,8 @@
 import React from 'react'
 import firebase from 'react-native-firebase'
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { AppConsumer } from '../../AppContext';
+
 
 export default class SignUp extends React.Component {
   

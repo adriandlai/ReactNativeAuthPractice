@@ -14,7 +14,7 @@ class pastOrders extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>I'm Tab A</Text>
+        <Text style={styles.text}>I'm a past Order</Text>
       </View>
       )
   }

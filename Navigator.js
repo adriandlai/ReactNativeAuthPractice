@@ -22,7 +22,9 @@ const OrderNavigator = StackNavigator({
   PastOrder: PastOrders,
   NewOrder: newOrder,
   vendorSelection: vendorSelection,
-  vendorMenu: vendorMenu
+  vendorMenu: vendorMenu,
+  item: item,
+  pastOrders: PastOrders
 }, {
   initialRouteName: 'Home',
 })
