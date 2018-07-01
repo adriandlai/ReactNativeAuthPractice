@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-import { Button, Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
+// import { Button, Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
+import { Container, Header, Content, List, ListItem, Thumbnail, Text, Body } from 'native-base';
+
 import {TouchableOpacity} from 'react-native'
 import { AppConsumer } from '../../AppContext';
-
-
-const vendors = [
-  {name: 'Vendorone'},
-  {name: 'Vendortwo'},
-  {name: 'Vendorthree'},
-  {name: 'Vendorfour'}
-]
-
 
 export default class vendorSelection extends Component {
 
@@ -18,43 +11,55 @@ export default class vendorSelection extends Component {
     title: 'Stack'
   }
 
-  renderVendor = (vendor, i) => {
-    return(
-      <React.Fragment>
-   
-      <TouchableOpacity
-      key={i}
-      // style={styles.item}
-      onPress={() => this.props.navigation.navigate('vendorMenu', { title: vendor.name })}
-    >
-      {/* <Text style={styles.itemText}>{item.name}</Text> */}
-      <Text>{vendor.name}</Text>
-      </TouchableOpacity>
-      <AppConsumer>
-          {(context) => (
-            <React.Fragment>
-              {/* <Text>{context.state.users.user[0].email}</Text> */}
-              <Text>{context.state.product.product[0].name}</Text>
-
-              {/* <Text>{context.state.users.currentUser}</Text> */}
-              {/* {console.log(context.state.user)} */}
-              {/* <p>Name: {context.state.name}</p>
-              <button onClick={context.growAYearOlder}>🍰🍥🎂</button> */}
-            </React.Fragment>
-          )}
-        </AppConsumer>
-        </React.Fragment>
- 
-  
-    
-    )
-  }
-  
   render() {
     return (
       <Container>
-        {vendors.map(this.renderVendor)}
+      <AppConsumer>
+          {(context) => (
+            <React.Fragment>
+            {context.state.vendor.vendor.map((vendor,index)=>{
+              return(
+                <Container>
+                  
+                  <Header />
+                  <Content>
+                    <List>   
+                      <ListItem>
+                        <Thumbnail square size={80} source={{ uri: 'https://www.cleaneatsmealprep.com/wp-content/uploads/2017/08/Clean-Eats-Word-Logo.png'}} />
+                        {/* ('./assets/RNFirebase.png') */}
+                        <Body>
+                        <TouchableOpacity
+                          key={vendor.id}
+                          onPress={() => this.props.navigation.navigate('vendorMenu', { title: vendor.name})}
+                         > 
+                          <Text>{vendor.name}</Text>
+                          {/* <Text note>{vendor.description} . .</Text> */}
+                          </TouchableOpacity>
+                        </Body>
+                      </ListItem>
+                    </List>
+                  </Content>
+                </Container> 
+
+
+
+              //   <TouchableOpacity 
+              //   key={vendor.id}
+              //   onPress={() => this.props.navigation.navigate('vendorMenu', { title: vendor.name})}
+              //  >
+              //  <Text>{vendor.name}</Text>
+              //   </TouchableOpacity>
+              )
+
+
+            })} 
+            </React.Fragment>
+          )}
+        </AppConsumer>
       </Container>
     );
   }
 }
+
+
+
