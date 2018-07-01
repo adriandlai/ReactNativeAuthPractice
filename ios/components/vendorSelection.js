@@ -33,7 +33,10 @@ export default class vendorSelection extends Component {
       <AppConsumer>
           {(context) => (
             <React.Fragment>
-              <Text>{context.state.users.user[0].email}</Text>
+              {/* <Text>{context.state.users.user[0].email}</Text> */}
+              <Text>{context.state.product.product[0].name}</Text>
+
+              {/* <Text>{context.state.users.currentUser}</Text> */}
               {/* {console.log(context.state.user)} */}
               {/* <p>Name: {context.state.name}</p>
               <button onClick={context.growAYearOlder}>🍰🍥🎂</button> */}
