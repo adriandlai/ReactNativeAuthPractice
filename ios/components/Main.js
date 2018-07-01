@@ -42,6 +42,10 @@ onPressLogOut = async()=> {
 componentDidMount() {
     const { currentUser } = firebase.auth()
     this.setState({ currentUser })
+    {(context) => (
+          context.setUser(currentUser)
+      )}
+
 } 
 
 render() {
