@@ -23,7 +23,8 @@ export class AppProvider extends React.Component {
             users: [],
             product:[],
             vendor:[],
-            currentUser: 2
+            currentUser: 2,
+            currentCart: []
             // setState = ()
         }
     }
@@ -53,19 +54,37 @@ export class AppProvider extends React.Component {
 
     }
 
-    // fetchCart = () =>{
-    //     (
+    postCart = (product_id, quantity) => {
 
-    //     )
-    // }
+        const url = 'http://localhost:3000/cart'
+        let content = {
+          product_tb_id: product_id,
+          order_tb_id: 4,
+          quantity: quantity  
+        }
+    
+        fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(content),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(resp => resp.json())
+        .then(currentCart => {
+        //   this.setState(
+        //     {currentCart}
+        //   )
+        console.log('currentCart', currentCart)
+        })
+        .catch(function(error) {
+          console.log('error')
+        })
+      }
+    
 
-    // setCurrentUser = (currentUser) =>
-    // {
-    //     this.setState({
-    //         currentUser
-    //     })
-    // }
-
+    
     // setCurrentUser = () =>{
     //     const { currentUser } = firebase.auth()
     //     this.setState({
@@ -89,7 +108,8 @@ export class AppProvider extends React.Component {
         return (
             <AppContext.Provider value={{
                 state: this.state,
-                setCurrentUser: this.setCurrentUser
+                setCurrentUser: this.setCurrentUser,
+                postCart:this.postCart
                 // {
                 //     // loggedIn: this.state.loggedIn,
                 //     users: this.state.users,

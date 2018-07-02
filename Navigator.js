@@ -9,7 +9,7 @@ import Login from './ios/components/Login'
 import Main from './ios/components/Main'
 import cartTotal from './ios/components/cartTotal'
 import checkout from './ios/components/checkout'
-import item from './ios/components/item'
+import FoodItem from './ios/components/FoodItem'
 import MyAccount from './ios/components/myAccount'
 import newOrder from './ios/components/newOrder'
 import PastOrders from './ios/components/pastOrders'
@@ -23,7 +23,7 @@ const OrderNavigator = StackNavigator({
   NewOrder: newOrder,
   vendorSelection: vendorSelection,
   vendorMenu: vendorMenu,
-  item: item,
+  FoodItem: FoodItem,
   pastOrders: PastOrders
 }, {
   initialRouteName: 'Home',

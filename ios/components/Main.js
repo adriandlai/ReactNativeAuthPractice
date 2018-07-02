@@ -83,10 +83,4 @@ return (
   }
 }
 
-const MainElement = () => (
-<AppConsumer>
-    {(context) => (
-           <Main context = {context}/>
-      )}
-</AppConsumer>   
-)
+
