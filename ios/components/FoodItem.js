@@ -30,7 +30,7 @@ export default class FoodItem extends Component {
     const name = navigation.getParam('name', 'noName');   
     const description = navigation.getParam('description', 'noDescription');
     const id = navigation.getParam('id', 'noID')
-    const quantity = 4
+    // const quantity = 4
 
     return (
       <React.Fragment>
@@ -51,12 +51,13 @@ export default class FoodItem extends Component {
       </Item>
       <Button success onPress = {this.increment}><Text>+</Text></Button>
       <Button warning onPress = {this.decrement}><Text>-</Text></Button>
+      <Button success onPress={()=> this.props.navigation.navigate('vendorMenu')}><Text>Add to Cart</Text></Button>
       {/* <Button success onPress = {context.postCart(id, quantity)} id ={id}><Text>Add to Cart</Text></Button>   */}
-      <AppConsumer>
+      {/* <AppConsumer>
       {(context) => (
       <Button success onPress = {context.postCart(id, this.state.quantity)} id ={id}><Text>Add to Cart</Text></Button>
       )}
-      </AppConsumer>
+      </AppConsumer> */}
       </React.Fragment>
     );
   }
