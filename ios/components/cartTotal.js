@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Text, Icon, Right, Left, Button } from 'native-base';
-
-
-
+import {StyleSheet} from 'react-native'
 import { AppConsumer } from '../../AppContext';
 
 
@@ -10,9 +8,9 @@ export default class cartTotal extends Component {
   render() {
     return (
       <Container>
-        <Header />
+        {/* <Header /> */}
         <Content>
-          <Card>
+          <Card style= {styles.card}>
             <CardItem>
             <Left>
                 <Text>1</Text>
@@ -51,10 +49,40 @@ export default class cartTotal extends Component {
               </Right>
              </CardItem>
            </Card>
-           <Button onPress={()=> this.props.navigation.navigate('vendorMenu')} success>><Text>Back to Menu</Text></Button>  
-           <Button onPress={()=> this.props.navigation.navigate('checkout')} success>><Text>Continue to Checkout</Text></Button>   
+      {/* <Container style = {styles.container}> */}
+           <Button style = {styles.button} onPress={()=> this.props.navigation.navigate('vendorMenu')} success>><Text>Back to Menu</Text></Button>  
+           <Button style = {styles.button} onPress={()=> this.props.navigation.navigate('checkout')} success>><Text>Continue to Checkout</Text></Button>  
+      {/* </Container>  */}
          </Content>
       </Container>
-    );
+    )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // width:400
+  },
+  card: {
+    marginTop: 150,
+    // width: 200
+  
+  },
+  textInput: {
+    height: 40,
+    width: '90%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginTop: 8
+  },
+  button: {
+    flex:1,
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+    // alignSelf: 'auto'
+  }
+})

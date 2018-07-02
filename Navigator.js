@@ -15,6 +15,7 @@ import newOrder from './ios/components/newOrder'
 import PastOrders from './ios/components/pastOrders'
 import vendorMenu from './ios/components/vendorMenu'
 import vendorSelection from './ios/components/vendorSelection'
+import SuccessfulPayment from './ios/components/SuccessfulPayment'
 
 
 const OrderNavigator = StackNavigator({
@@ -26,7 +27,8 @@ const OrderNavigator = StackNavigator({
   FoodItem: FoodItem,
   pastOrders: PastOrders,
   cartTotal: cartTotal,
-  checkout: checkout
+  checkout: checkout,
+  Success: SuccessfulPayment
 
 }, {
   initialRouteName: 'Home',
@@ -52,7 +54,7 @@ const Tabs = TabNavigator(
   // PastOrders: { screen: PastOrders }
 },
  {
-  order: ['Cart', 'MyAccount']
+  order: ['MyAccount', 'Cart']
 })
 
 // create our app's navigation stack

@@ -2,6 +2,8 @@ import React from 'react'
 import {Button} from 'native-base'
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native'
 import firebase from 'react-native-firebase'
+import {YellowBox} from 'react-native';
+
 
 export default class Login extends React.Component {
 
@@ -18,6 +20,8 @@ export default class Login extends React.Component {
 
     }
   render() {
+    YellowBox.ignoreWarnings(['Warning: ...']);
+
     return (
       <View style={styles.container}>
          <Image

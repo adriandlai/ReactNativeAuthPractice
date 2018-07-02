@@ -38,6 +38,7 @@ export default class vendorMenu extends Component {
                            key={product.id}
                            onPress={() => this.props.navigation.navigate('FoodItem', 
                            {title: product.name,
+                            url: product.picture_url,
                             id: product.id,
                             description: product.description,
                             name: product.name

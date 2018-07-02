@@ -1,6 +1,62 @@
-import { Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Text, Icon, Right, Button } from 'native-base';
+import {StyleSheet, View, TextInput, Image} from 'react-native'
 import { AppConsumer } from '../../AppContext';
 import React, { Component } from 'react'
+
+export default class Login extends React.Component {
+
+  
+  
+  render() {
+    return (
+      <View style={styles.container}>
+         <Image
+          style={{width: 250, height: 200}}
+          // source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
+          source={require('../../assets/Final.png')}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Credit Card Number"
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Security Code"
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="MM/YY"
+        />
+        <Button style={styles.button} onPress={() => this.props.navigation.navigate('Home')}>
+        <Text>
+          Pay $58.80
+        </Text>  
+        </Button>
+
+      </View>
+    )
+  }
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  textInput: {
+    height: 40,
+    width: '90%',
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginTop: 8
+  },
+  button: {
+    marginTop: 10,
+    alignSelf: 'auto'
+  }
+})
 
 
 
