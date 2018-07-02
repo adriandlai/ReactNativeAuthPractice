@@ -29,14 +29,14 @@ export default class vendorMenu extends Component {
             <React.Fragment>
             {context.state.product.product.map((product,index)=>{
               return(
-          
+        
                     <List>   
                       <ListItem>
                         <Thumbnail square size={80} source={{ uri: 'https://www.cleaneatsmealprep.com/wp-content/uploads/2017/08/Clean-Eats-Word-Logo.png'}} />
                         <Body>
                         <TouchableOpacity
                            key={product.id}
-                           onPress={() => this.props.navigation.navigate('item', 
+                           onPress={() => this.props.navigation.navigate('FoodItem', 
                            {title: product.name,
                             id: product.id,
                             description: product.description,

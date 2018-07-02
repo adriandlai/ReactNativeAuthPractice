@@ -1,6 +1,7 @@
 import React from 'react'
 import firebase from 'react-native-firebase'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Image } from 'react-native'
+import {Button} from 'native-base'
 import { AppConsumer } from '../../AppContext';
 
 
@@ -18,7 +19,10 @@ handleSignUp = () => {
 render() {
     return (
       <View style={styles.container}>
-        <Text>Sign Up</Text>
+        <Image
+          style={{width: 250, height: 200}}
+          source={require('../../assets/Final.png')}
+        />
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
@@ -38,15 +42,19 @@ render() {
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
         />
-        <Button title="Sign Up" onPress={this.handleSignUp} />
-        <Button
-          title="Already have an account? Login"
-          onPress={() => this.props.navigation.navigate('Login')}
-        />
+        <Button style={styles.button} success onPress={this.handleSignUp}>
+        <Text>Sign Up!</Text>
+        </Button>
+        <Button style={styles.button} onPress={() => this.props.navigation.navigate('Login')}>
+        <Text>
+          I already have an account. Let's Login
+        </Text>  
+        </Button>
       </View>
     )
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -59,5 +67,9 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     marginTop: 8
+  },
+  button: {
+    marginTop: 10,
+    alignSelf: 'auto'
   }
 })

@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import {Button} from 'native-base'
+import { StyleSheet, Text, TextInput, View, Image } from 'react-native'
 import firebase from 'react-native-firebase'
 
 export default class Login extends React.Component {
@@ -19,7 +20,11 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Login</Text>
+         <Image
+          style={{width: 250, height: 200}}
+          // source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
+          source={require('../../assets/Final.png')}
+        />
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
@@ -39,11 +44,15 @@ export default class Login extends React.Component {
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
         />
-        <Button title="Login" onPress={this.handleLogin} />
-        <Button
-          title="Don't have an account? Sign Up"
-          onPress={() => this.props.navigation.navigate('SignUp')}
-        />
+        <Button style={styles.button} success onPress={this.handleLogin}>
+        <Text>Login</Text>
+        </Button>
+        <Button style={styles.button} onPress={() => this.props.navigation.navigate('SignUp')}>
+        <Text>
+          I need to create an Account
+        </Text>  
+        </Button>
+
       </View>
     )
   }
@@ -60,5 +69,9 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     marginTop: 8
+  },
+  button: {
+    marginTop: 10,
+    alignSelf: 'auto'
   }
 })
