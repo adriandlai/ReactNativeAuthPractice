@@ -1,6 +1,7 @@
 import React from 'react'
 import firebase from 'react-native-firebase'
-import { Container, Header, Content, Button, Text } from 'native-base';
+import { Container, Header, Content, Button, Text, H2, H1 } from 'native-base';
+import {StyleSheet, Image} from 'react-native'
 import { AppConsumer } from '../../AppContext';
 
 export default class Main extends React.Component {
@@ -62,21 +63,21 @@ componentDidMount() {
 render() {
     const { currentUser } = this.state
 return (
-    <Container>
-    <Header />
-    <Text>
+    <Container style = {styles.container}>
+    <Image
+          style={{width: 400, height: 100}}
+          source={require('../../assets/finalName.jpg')}
+        />
+    <H2 style= {styles.header}>
     Hi {currentUser && currentUser.email}!
-    </Text>
+    </H2>
     <Content>
-      <Button success 
+      <Button success style= {styles.button}
       onPress={()=> this.props.navigation.navigate('NewOrder')}>
       <Text> New Order </Text>
       </Button>
-      <Button warning onPress={()=> this.props.navigation.navigate('pastOrders')}><Text> Past Order </Text></Button>
-      <Button danger title="Logout" onPress={this.onPressLogOut}><Text> Logout </Text></Button>
-      {/* <AppConsumer>
-        {(context)=> context.setCurrentUser(currentUser)}
-      </AppConsumer>   */}
+      <Button warning style= {styles.button} onPress={()=> this.props.navigation.navigate('pastOrders')}><Text> Past Order </Text></Button>
+      <Button danger style= {styles.button} onPress={this.onPressLogOut}><Text> Logout </Text></Button>
     </Content>
   </Container>
     )
@@ -84,3 +85,24 @@ return (
 }
 
 
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center', 
+    },
+    header: {
+        marginTop:20
+    },
+    // image: {
+    //      width: 400,
+    //      height:100,
+    // //   borderColor: 'gray',
+    // //   borderWidth: 1,
+    // //   marginTop: 8
+    // },
+    button: {
+      marginTop: 50,
+      alignSelf: 'auto'
+    }
+  })
