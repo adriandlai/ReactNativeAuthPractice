@@ -24,19 +24,35 @@ const OrderNavigator = StackNavigator({
   vendorSelection: vendorSelection,
   vendorMenu: vendorMenu,
   FoodItem: FoodItem,
-  pastOrders: PastOrders
+  pastOrders: PastOrders,
+  cartTotal: cartTotal,
+  checkout: checkout
+
 }, {
   initialRouteName: 'Home',
 })
+
+// const checkoutNavigator = StackNavigator({
+//   Order: cartTotal,
+//   vendorMenu: vendorMenu,
+//   NewOrder: newOrder,
+//   vendorSelection: vendorSelection,
+//   vendorMenu: vendorMenu,
+//   FoodItem: FoodItem,
+//   pastOrders: PastOrders
+// }, {
+//   initialRouteName: 'Order',
+// })
 
 const Tabs = TabNavigator(
   {
   // Main: {screen: Main},
   MyAccount: { screen: OrderNavigator},
+  Cart: {screen: cartTotal}
   // PastOrders: { screen: PastOrders }
 },
  {
-  order: ['MyAccount']
+  order: ['Cart', 'MyAccount']
 })
 
 // create our app's navigation stack
