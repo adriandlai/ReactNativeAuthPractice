@@ -3,6 +3,8 @@ import firebase from 'react-native-firebase'
 import { Container, Header, Content, Button, Text, H2, H1 } from 'native-base';
 import {StyleSheet, Image} from 'react-native'
 import { AppConsumer } from '../../AppContext';
+import {YellowBox} from 'react-native';
+
 
 export default class Main extends React.Component {
 

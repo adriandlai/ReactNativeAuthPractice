@@ -32,12 +32,14 @@ export default class vendorMenu extends Component {
         
                     <List>   
                       <ListItem>
-                        <Thumbnail square size={80} source={{ uri: 'https://www.cleaneatsmealprep.com/wp-content/uploads/2017/08/Clean-Eats-Word-Logo.png'}} />
+                        {/* <Thumbnail square size={80} source={{ uri: 'https://www.cleaneatsmealprep.com/wp-content/uploads/2017/08/Clean-Eats-Word-Logo.png'}} /> */}
+                        <Thumbnail square size={80} source={{ uri: product.picture_url}} />
                         <Body>
                         <TouchableOpacity
                            key={product.id}
                            onPress={() => this.props.navigation.navigate('FoodItem', 
                            {title: product.name,
+                            url: product.picture_url,
                             id: product.id,
                             description: product.description,
                             name: product.name

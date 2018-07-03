@@ -4,17 +4,53 @@ import {
   Text,
   StyleSheet,
 } from 'react-native'
+// import { STATUS_CODES } from 'http';
+
+const url = 'http://localhost:3000/cart/orderdetails/2'
 
 class pastOrders extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+        pastOrders: {}
+        // setState = ()
+    }
+}
+
 
   static navigationOptions = ({ navigation }) => ({
     title: 'pastOrders',
   })
 
+  
+  fetchPastOrder = (url) => {
+    return fetch(url)
+    .then(response => response.json())
+    .then(pastOrders => this.setState({
+        pastOrders
+    }))
+  }
+
+    // componentDidMount() {
+    //   this.fetchUser(usersUrl)
+    //   this.fetchVendor(vendorUrl)
+    //   this.fetchProduct(productUrl)
+    //   // this.setCurrentUser()
+         
+    //   }
+     
+  componentDidMount() {
+      this.fetchPastOrder(url)
+    }
+
+
+
   render () {
+    console.log(this.state)
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>I'm a past Order</Text>
+        {/* <Text style={this.state.pastOrders.pastOrders}>I'm a past Order</Text> */}
       </View>
       )
   }
