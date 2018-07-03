@@ -45,6 +45,7 @@ export default class FoodItem extends Component {
     const description = navigation.getParam('description', 'noDescription');
     const id = navigation.getParam('id', 'noID')
     const url = navigation.getParam('url', 'noURL')
+
     console.log(url)
     return (  
       <React.Fragment>
@@ -54,17 +55,12 @@ export default class FoodItem extends Component {
           <Card>
             <CardItem style={styles.container}>
               <Text>{name}</Text>
-              {/* <Text>{description}</Text> */}
              </CardItem>
              <CardItem cardBody>
              <Image 
-            //  style={{ resizeMode: 'cover' }} 
-             style={{width: 50, height: 50}}
-
+             style={{width: 150, height: 150}}
              source= {{uri: url}} />
-             
-              <Text>{description}</Text>
-              {/* <Text>{description}</Text> */}
+            <Text>{description}</Text>
              </CardItem>
            </Card>
         </Content>
@@ -77,14 +73,14 @@ export default class FoodItem extends Component {
       
       <Button style= {styles.button} success onPress = {this.increment}><Text>+</Text></Button>
       <Button style= {styles.button} warning onPress = {this.decrement}><Text>-</Text></Button>
-      <Button style= {styles.button} success onPress={()=> this.props.navigation.navigate('vendorMenu')}><Text>Add to Cart</Text></Button>
+      {/* <Button style= {styles.button} success onPress={()=> this.props.navigation.navigate('vendorMenu')}><Text>Add to Cart</Text></Button> */}
       </Container>
       {/* <Button success onPress = {context.postCart(id, quantity)} id ={id}><Text>Add to Cart</Text></Button>   */}
-      {/* <AppConsumer>
+      <AppConsumer>
       {(context) => (
-      <Button success onPress = {context.postCart(id, this.state.quantity)} id ={id}><Text>Add to Cart</Text></Button>
+      <Button success onPress = {() => context.postCart(id, this.state.quantity)}><Text>Add to Cart</Text></Button>
       )}
-      </AppConsumer> */}
+      </AppConsumer>
       </React.Fragment> 
       
     );
