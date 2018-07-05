@@ -21,11 +21,14 @@ class SucessfulPayment extends Component {
   }
 }
 export default SucessfulPayment
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'white',
+
     // backgroundColor: '#c0392b',
     padding: 20,
   },

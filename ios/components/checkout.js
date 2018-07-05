@@ -4,8 +4,9 @@ import { AppConsumer } from '../../AppContext';
 import React, { Component } from 'react'
 
 export default class Login extends React.Component {
-
-  
+  static navigationOptions = {
+    title: 'Cart Total'
+  }
   
   render() {
     return (
@@ -43,7 +44,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'white'
+
   },
   textInput: {
     height: 40,

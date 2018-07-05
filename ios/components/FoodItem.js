@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Input, Item, Header, Content,Card, CardItem, Text, List, ListItem, Thumbnail, Body, Right, Button } from 'native-base';
+import { Container, Input,H2, Item, Header, Content,Card, CardItem, Text, List, ListItem, Thumbnail, Body, Right, Button } from 'native-base';
 
 import {TouchableOpacity, StyleSheet, View, Image} from 'react-native'
 import { AppConsumer } from '../../AppContext';
@@ -26,17 +26,7 @@ export default class FoodItem extends Component {
     this.setState({quantity: this.state.quantity - 1})
   }
 
-  // const icons = {
-  //   success: require('./icons/check.png'),
-  //   warning: require('./icons/warning.png'),
-  //   error: require('./icons/error.png'),
-  // }
   
-  // function getImage(status) {
-  //   return <img src={icons[status]} alt={status} className='icon' />
-  // }
-
-
 
   render() {
     const { navigation } = this.props;
@@ -49,38 +39,43 @@ export default class FoodItem extends Component {
     console.log(url)
     return (  
       <React.Fragment>
-      <Container>
-        <Header />
-        <Content>
-          <Card>
-            <CardItem style={styles.container}>
-              <Text>{name}</Text>
-             </CardItem>
-             <CardItem cardBody>
+      <Container style={styles.container}>
+        {/* <Header /> */}
+        <Content padder>
+          {/* <Header/> */}
+          <Card style={styles.card} transparent>
+            <CardItem header bordered>
+              <H2>{name}</H2>
+            </CardItem>
+             <CardItem style={styles.container} cardBody>
              <Image 
-             style={{width: 150, height: 150}}
+             style={{width: 75, height: 100}}
              source= {{uri: url}} />
-            <Text>{description}</Text>
+              <Text 
+              style= {{width:250}}
+              >{description}
+              </Text>
              </CardItem>
            </Card>
-        </Content>
-      </Container>
-      <Container style={styles.container}>
-      <Item regular>
+      <Item regular style= {styles.container}>
             <Text>{this.state.quantity}</Text>
-            {/* <Input placeholder={this.state.quantity} /> */}
       </Item>
-      
+      <View style = {styles.container}>
       <Button style= {styles.button} success onPress = {this.increment}><Text>+</Text></Button>
       <Button style= {styles.button} warning onPress = {this.decrement}><Text>-</Text></Button>
-      {/* <Button style= {styles.button} success onPress={()=> this.props.navigation.navigate('vendorMenu')}><Text>Add to Cart</Text></Button> */}
-      </Container>
-      {/* <Button success onPress = {context.postCart(id, quantity)} id ={id}><Text>Add to Cart</Text></Button>   */}
       <AppConsumer>
       {(context) => (
-      <Button success onPress = {() => context.postCart(id, this.state.quantity)}><Text>Add to Cart</Text></Button>
+      <Button style={styles.buttonAdd} success onPress = {() => 
+       context.postCart(id, this.state.quantity).then(()=>
+        {
+        this.props.navigation.navigate('vendorMenu')}
+      )}><Text>Add to Cart</Text>
+      </Button>
       )}
       </AppConsumer>
+      </View>
+      </Content>
+      </Container>
       </React.Fragment> 
       
     );
@@ -91,7 +86,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'white'
+    // width: 100
+    // flexGrow:1
+  },
+
+  card: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems:'center'
   },
   textInput: {
     height: 40,
@@ -101,7 +105,21 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   button: {
-    marginTop: 10,
-    alignSelf: 'auto'
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+    alignSelf: 'auto',
+    width: 75
+  },
+
+  buttonAdd: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+    alignSelf: 'auto',
+    width: 200
+
   }
 })
