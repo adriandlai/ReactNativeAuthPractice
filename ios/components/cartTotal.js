@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Text, Icon, Right, Left, Button } from 'native-base';
-import {StyleSheet} from 'react-native'
+import { Container, Header,H2, Content, Card, CardItem, Text, Icon, Right, Left, Button } from 'native-base';
+import {StyleSheet, View} from 'react-native'
 import { AppConsumer } from '../../AppContext';
 
 
@@ -10,6 +10,7 @@ export default class cartTotal extends Component {
       <Container>
         {/* <Header /> */}
         <Content>
+          {/* <H2>Checkout Cart </H2> */}
           <Card style= {styles.card}>
             <CardItem>
             <Left>
@@ -49,10 +50,12 @@ export default class cartTotal extends Component {
               </Right>
              </CardItem>
            </Card>
+           <View style={styles.buttonContainer}>
       {/* <Container style = {styles.container}> */}
            <Button style = {styles.button} onPress={()=> this.props.navigation.navigate('vendorMenu')} success>><Text>Back to Menu</Text></Button>  
            <Button style = {styles.button} onPress={()=> this.props.navigation.navigate('checkout')} success>><Text>Continue to Checkout</Text></Button>  
       {/* </Container>  */}
+          </View>
          </Content>
       </Container>
     )
@@ -64,6 +67,8 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white'
+
     // width:400
   },
   card: {
@@ -80,9 +85,16 @@ const styles = StyleSheet.create({
   },
   button: {
     flex:1,
-    marginTop: 10,
+    marginTop: 30,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    alignSelf: 'auto'
+  },
+   buttonContainer: {
+    // marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex:1
     // alignSelf: 'auto'
   }
 })

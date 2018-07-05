@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, List, ListItem, Thumbnail, Text, Body } from 'native-base';
 
-import {TouchableOpacity} from 'react-native'
+import {TouchableOpacity, StyleSheet} from 'react-native'
 import { AppConsumer } from '../../AppContext';
 
 export default class vendorSelection extends Component {
 
   static navigationOptions = {
-    title: 'Stack'
+    title: 'Vendor Selection'
   }
 
   render() {
     return (
-      <Container>
+      <Container style ={styles.container}>
       <AppConsumer>
           {(context) => (
             <React.Fragment>
@@ -50,6 +50,16 @@ export default class vendorSelection extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: 'white'
+ 
+  }
+})
 
 
 

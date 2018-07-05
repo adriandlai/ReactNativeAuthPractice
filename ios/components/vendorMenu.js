@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, List, ListItem, Thumbnail, Text, Body } from 'native-base';
-import {TouchableOpacity} from 'react-native'
+import {TouchableOpacity, StyleSheet} from 'react-native'
 import { AppConsumer } from '../../AppContext';
     
 
@@ -23,16 +23,17 @@ export default class vendorMenu extends Component {
 
   render() {
     return (
-      <Container>
+      // <Container style = {styles.container}>
+      <Container style = {styles.container}>
+
+      <Content>
       <AppConsumer>
           {(context) => (
             <React.Fragment>
             {context.state.product.product.map((product,index)=>{
               return(
-        
                     <List>   
                       <ListItem>
-                        {/* <Thumbnail square size={80} source={{ uri: 'https://www.cleaneatsmealprep.com/wp-content/uploads/2017/08/Clean-Eats-Word-Logo.png'}} /> */}
                         <Thumbnail square size={80} source={{ uri: product.picture_url}} />
                         <Body>
                         <TouchableOpacity
@@ -58,7 +59,19 @@ export default class vendorMenu extends Component {
             </React.Fragment>
           )}
         </AppConsumer>
+        </Content> 
       </Container>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    backgroundColor: 'white',
+
+    // backgroundColor: '#c0392b',
+    // padding: 20,
+  }})

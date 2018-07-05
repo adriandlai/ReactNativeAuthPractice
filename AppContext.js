@@ -1,6 +1,8 @@
 import React from 'react'
 import firebase from 'react-native-firebase'
 import {Alert} from 'react-native'
+import Navigator from './Navigator'
+// import { withNavigation } from 'react-navigation'
 
 
 const usersUrl = 'http://localhost:3000/user'
@@ -55,7 +57,7 @@ export class AppProvider extends React.Component {
     }
 
     postCart = (product_id, quantity) => {
-
+        // navigation.navigate('vendorMenu') 
         const url = 'http://localhost:3000/cart'
         let content = {
           product_tb_id: product_id,
@@ -63,7 +65,7 @@ export class AppProvider extends React.Component {
           quantity: quantity  
         }
     
-        fetch(url, {
+       return fetch(url, {
           method: 'POST',
           body: JSON.stringify(content),
           headers: {
@@ -73,14 +75,15 @@ export class AppProvider extends React.Component {
         })
         .then(resp => resp.json())
         .then(currentCart => {
-        //   this.setState(
-        //     {currentCart}
-        //   )
-        console.log('currentCart', currentCart)
+          this.setState(
+            {currentCart}
+          )
+        // console.log('currentCart', currentCart)
         })
         .catch(function(error) {
           console.log('error')
         })
+
       }
     
 
@@ -110,16 +113,6 @@ export class AppProvider extends React.Component {
                 state: this.state,
                 setCurrentUser: this.setCurrentUser,
                 postCart:this.postCart
-                // {
-                //     // loggedIn: this.state.loggedIn,
-                //     users: this.state.users,
-                //     product: this.state.product,
-                //     vendor: this.state.vendor,
-                //     // setStateFunct: (keyValue, newValue) => this.setStatel({keyValue: newValue})
-                //     // setUser: (currentUser) => this.setState({ currentUser: currentUser})
-
-                //     // toggleAuthState: this.toggleAuthState,
-                // },
             }}>
                 {this.props.children}
             </AppContext.Provider>

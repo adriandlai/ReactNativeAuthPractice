@@ -31,14 +31,6 @@ class pastOrders extends Component {
         pastOrders
     }))
   }
-
-    // componentDidMount() {
-    //   this.fetchUser(usersUrl)
-    //   this.fetchVendor(vendorUrl)
-    //   this.fetchProduct(productUrl)
-    //   // this.setCurrentUser()
-         
-    //   }
      
   componentDidMount() {
       this.fetchPastOrder(url)
